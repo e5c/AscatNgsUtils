@@ -43,6 +43,10 @@ object AscatInput {
     var referenceFastaPath: String = ""
   }
 
+  def main(args: Array[String]): Unit = {
+    ProcessBams.run(args)
+  }
+
   object ProcessBams extends SparkCommand[Arguments] {
     override val name = "ASCAT preprocessing"
     override val description = "ETL NGS bam's for input to ASCAT."

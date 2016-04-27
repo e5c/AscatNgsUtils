@@ -81,7 +81,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.hadoop:hadoop-yarn-common:2.2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.2.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.hadoop:hadoop-annotations:2.2.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.hammerlab:pageant:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bdgenomics.adam:adam-core_2.10:0.19.1-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bdgenomics.utils:utils-metrics_2.10:0.2.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bdgenomics.utils:utils-misc_2.10:0.2.4" level="project" />
