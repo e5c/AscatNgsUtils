@@ -25,8 +25,8 @@
     <scala.version.prefix>2.11</scala.version.prefix>
     <spark.version>1.6.1</spark.version>
     <avro.version>1.8.0</avro.version>
-    <pageant.version>1.0-SNAPSHOT</pageant.version>
     <guacamole.version>0.0.1-SNAPSHOT</guacamole.version>
+    <guacamole.path>/Users/eliza/hammerlab/guacamole/target</guacamole.path>
     <scala.version.prefix>2.10</scala.version.prefix>
   </properties>
 
@@ -226,7 +226,7 @@
       <artifactId>guacamole</artifactId>
       <version>${guacamole.version}</version>
       <scope>system</scope>
-      <systemPath>/Users/eliza/hammerlab/guacamole/target/guacamole-with-dependencies-${guacamole.version}.jar</systemPath>
+      <systemPath>${guacamole.path}/guacamole-with-dependencies-${guacamole.version}.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
@@ -241,12 +241,6 @@
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.hammerlab</groupId>
-      <artifactId>pageant</artifactId>
-      <version>${pageant.version}</version>
-      <scope>provided</scope>
-    </dependency> 
     <dependency>
       <groupId>org.bdgenomics.adam</groupId>
       <artifactId>adam-core_2.10</artifactId>
