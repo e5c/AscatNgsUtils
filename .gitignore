@@ -1,5 +1,8 @@
 target
 .idea
 *~
+ascatutils.iml
 *.iml
 ascatutils.iml
+*.log
+*.sh
