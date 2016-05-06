@@ -9,12 +9,14 @@ import org.hammerlab.guacamole.Common.NoSequenceDictionaryArgs
 import org.hammerlab.guacamole.distributed.LociPartitionUtils
 import org.hammerlab.guacamole.distributed.LociPartitionUtils._
 import org.hammerlab.guacamole.distributed.PileupFlatMapUtils._
+import org.hammerlab.guacamole.loci.LociArgs
 import org.hammerlab.guacamole.loci.set.LociSet
 import org.hammerlab.guacamole.logging.LoggingUtils
 import org.hammerlab.guacamole.pileup.Pileup
 import org.hammerlab.guacamole.reads.InputFilters
 import org.hammerlab.guacamole.reference.ReferenceBroadcast
-import org.hammerlab.guacamole.{Common, ReadSet, SparkCommand}
+import org.hammerlab.guacamole.{Common, ReadSet}
+import org.hammerlab.guacamole.commands.SparkCommand
 import org.kohsuke.args4j.{Option => Args4jOption}
 
 import scala.math.log
@@ -29,7 +31,7 @@ import scala.math.log
 
 object AscatInput {
 
-  class Arguments extends LociPartitionUtils.Arguments with NoSequenceDictionaryArgs with Common.TumorNormalReadsArgs {
+  class Arguments extends LociArgs with LociPartitionUtils.Arguments with NoSequenceDictionaryArgs with Common.TumorNormalReadsArgs {
     @Args4jOption(name = "--generate-depths", required = false, usage = "Also write depths to file")
     var generateDepths: String = "true"
 
@@ -67,12 +69,12 @@ object AscatInput {
         )
 
       // TO DO handle gender either via command-line or within pileup
-      val bamLoci = Common.lociFromFile(args.lociFromFile, sc, normalReadSet.contigLengths)
+      val bamLoci = args.parseLoci(sc.hadoopConfiguration)
 
       generateDepthOutputs(sc,
         tumorReadSet,
         normalReadSet,
-        bamLoci,
+        bamLoci.result(normalReadSet.contigLengths),
         args.outDir,
         reference,
         args.generateDepths.toBoolean,
@@ -115,8 +117,7 @@ object AscatInput {
     val lociPartitions = partitionLociAccordingToArgs(
       distributedUtilArguments,
       bamLoci,
-      tumorReadSet.mappedReads,
-      normalReadSet.mappedReads
+      Vector(tumorReadSet.mappedReads, normalReadSet.mappedReads)
     )
 
     // get the tumor count & normal count; divide; take log(base2)

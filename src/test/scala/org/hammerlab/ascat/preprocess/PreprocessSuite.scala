@@ -1,10 +1,6 @@
 package org.hammerlab.ascat.preprocess
 
-import org.hammerlab.ascat.util.{AscatFunSuite, TestUtil}
-import org.hammerlab.guacamole.Common
-import org.hammerlab.guacamole.loci.LociArgs
-import org.hammerlab.guacamole.loci.set.LociSet
-import org.hammerlab.guacamole.logging.DebugLogArgs
+import org.hammerlab.ascat.util.AscatFunSuite
 
 class PreprocessSuite extends AscatFunSuite {
   /*  val normalBam = TestUtil.testDataPath("normal.bam")
@@ -24,7 +20,7 @@ class PreprocessSuite extends AscatFunSuite {
   sparkTest("i/o from both hdfs and nfs") {
 
   }
-
+/*
   sparkTest("loci parsing") {
     class TestArgs extends DebugLogArgs with LociArgs {}
 
@@ -40,7 +36,7 @@ class PreprocessSuite extends AscatFunSuite {
 
     //val args3 = new Test
   }
-
+*/
   /*
   // TO DO: complete all of these
   sparkTest("filter intronic SNPs from the full dbsnp VCF") {
